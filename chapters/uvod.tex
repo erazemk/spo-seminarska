@@ -1,0 +1,31 @@
+\section{Uvod}
+
+Posodobitve operacijskih sistemov ali njihovih komponent so zaradi lahkote izvedbe napadov skoraj obvezne za vse
+spletno povezane naprave.
+Praktično nemogoče je zagotoviti, da bo koda, ki jo pišejo programerji, brez napak, kar pomeni, da potrebujejo
+vse večje komponente, sistemske ali drugače, mehanizem posodobitev.
+V primeru sistemske programske opreme, ki je tesno vezana na operacijski sistem, ta mehanizem ponuja kar operacijski
+sistem, manj tesno vezane aplikacije, npr. spletni brskalniki, pa jih zagotavljajo same.
+
+Zaradi razlik med operacijskimi sistemi, se lahko mehanizmi posodobitev zelo razlikujejo.
+V naslednjih poglavjih bom predstavil nekaj skupnih lastnosti vseh mehanizmov posodobitev, nato pa podrobnosti
+implementacij v dveh najpogostejših operacijskih sistemih - Windows in Linux.
+
+\section{Skupne lastnosti implementacij}
+
+Omenjena operacijska sistema, pa tudi množica drugih, uporabljata spletno povezavo za prenos posodobitev,
+kar je dandanes precej standarden postopek, saj omogoča hitrejše in učinkovitejše nameščanje posodobitev
+kot ročen prenos in namestitev preko zunanjega medija, kot je npr. USB ključek ali zgoščenka.
+
+Prav tako oba omenjena operacijska sistema za prenos posodobitev uporabljajata kompresijske algoritme,
+ki lahko bistveno zmanjšajo velikost in skrajšajo čas prenosa posodobitev.
+
+Tudi postopek nameščanja posodobitev je podoben in sicer posodobitveni program kontaktira strežnik s posodobitvami,
+pri njem preveri ali so na voljo posodobitve, le-te prenese, če so na voljo, nato pa jih dekompresira in
+kakorkoli drugače obdela ter jih namesti v sistem.
+
+\section{Razlike med implementacijami}
+
+Kljub podobnostim med implementacijami najpogostejših operacijskih sistemov, imajo le-te tudi kar nekaj razlik,
+predvsem kar se tiče distribucije in lastništva strežnikov s posodobitvami, vrst posodobitev in kompresijskih
+algoritmov, ki jih uporabljajo za prenos posodobitev.

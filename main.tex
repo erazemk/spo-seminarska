@@ -1,0 +1,55 @@
+\documentclass[a4paper,12pt]{article}
+%\documentclass[a4paper,12pt,draft]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage[slovene,english]{babel}
+\usepackage[pdftex]{graphicx}
+\usepackage{lipsum}
+\usepackage[pdfusetitle]{hyperref}
+\usepackage{subfiles}
+\usepackage[none]{hyphenat}
+\usepackage{microtype}
+\usepackage{csquotes}
+\usepackage{float}
+\usepackage[backend=biber,style=numeric,sorting=nty]{biblatex}
+
+\addbibresource{resources/literatura.bib}
+\graphicspath{{./resources/}}
+
+\title{Implementacije posodobitev operacijskih sistemov}
+\author{Erazem Kokot}
+\date{2021/22}
+
+\begin{document}
+
+    \begin{titlepage}
+
+        \maketitle
+        \thispagestyle{empty}
+        \vfill
+
+        \begin{center}
+            Sistemska programska oprema,\\
+            Fakulteta za računalništvo in informatiko
+        \end{center}
+
+    \end{titlepage}
+
+    \selectlanguage{slovene}
+    \tableofcontents
+    \thispagestyle{empty}
+    \newpage
+
+    \subfile{chapters/uvod}
+    \newpage
+    \subfile{chapters/windows}
+    \newpage
+    \subfile{chapters/linux}
+    \newpage
+    \subfile{chapters/zakljucek}
+
+    \newpage
+    \printbibliography[heading=bibintoc,title={Literatura}]
+
+\end{document}
