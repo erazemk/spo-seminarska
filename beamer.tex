@@ -1,0 +1,131 @@
+% \documentclass{beamer}
+\documentclass[aspectratio=169]{beamer}
+\usepackage[utf8]{inputenc}
+
+\title{Implementacije posodobitev operacijskih sistemov}
+\author{Erazem Kokot}
+\institute[FRI]{Sistemska programska oprema,\\Fakulteta za računalništvo in informatiko}
+\date{2021/22}
+
+\usetheme{Copenhagen}
+\usecolortheme{beaver}
+\setbeamertemplate{navigation symbols}{}
+
+\begin{document}
+
+    \begin{frame}
+    \titlepage
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{Posodobitve operacijskih sistemov}
+        \begin{itemize}
+            \item obvezno za vse spletno povezane naprave,
+            \item varnostne posodobitve, nova funkcionalnost,
+            \item za sistemske komponente skrbi OS,
+            \item za aplikacije skrbi OS ali pa same implementirajo posodobitve.
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{Podobnosti med implementacijami}
+        \begin{itemize}
+            \item namestitev posodobitev preko spleta:
+            \begin{itemize}
+                \item hitrejše,
+                \item bolj skalabilno (avtomatizacija).
+            \end{itemize}
+            \item brez povezave preko zunanjega media (CD/USB):
+            \begin{itemize}
+                \item varnejše (banke, borze, \ldots),
+                \item uporaba kompresijskih algoritmov.
+            \end{itemize}
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{Visokonivojski postopek nameščanja}
+        \begin{enumerate}
+            \item kontaktiranje strežnika s posodobitvami,
+            \item iskanje posodobitev,
+            \item prenos najdenih posodobitev,
+            \item dekompresiranje in obdelava prenosa,
+            \item namestitev v sistem.
+        \end{enumerate}
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{Razlike med implementacijami}
+        \begin{itemize}
+            \item kdo gostuje strežnike (centralizirani ali decentralizirani),
+            \item vrsta in oblika posodobitev,
+            \item razlikovanje med sistemsko in aplikacijsko programsko opremo,
+            \item kompresijski algoritmi.
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{Windows}
+        \begin{itemize}
+            \item sistemske programe posodablja OS, aplikacije se posodabljajo posebej,
+            \item strežniki so v Microsoftovi lasti,
+            \item za posodobitve skrbi \emph{Orkestrator},
+            \item naključen čas iskanja posodobitev (obremenjenost strežnikov),
+            \item samo kumulativne posodobitve (prenos celotne vsebine),
+            \item \emph{forward and reverse} diferencialna kompresija (do 40\% prihranka).
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{Windows (podroben pogled)}
+        \begin{itemize}
+            \item delitev posodobitev na storitve (Windows Update, Microsoft Update, Store, ...),
+            \item uporaba \emph{Delivery Optimization} - preprečevanje zasičenosti omrežja,
+            \item \emph{Arbiter} uporabi metapodatke za generiranje \emph{seznama dejanj},
+            \item namestitveni program uporabi seznam dejanj za namestitev,
+            \item \emph{Orkestrator} ponovno zažene posodobljeno napravo.
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{Linux}
+        \begin{itemize}
+            \item veliko distribucij \( \Rightarrow \) veliko implementacij,
+            \item programi distributirani v obliki programskih paketov,
+            \item jedro distributirano kot programski paket,
+            \item za posodobitve skrbi \emph{package manager} (upravljalec paketov):
+            \begin{itemize}
+                \item primeri: DNF, APT, pacman, Zypper, \ldots
+                \item naloge: iskanje, prenos in namestitev paketov, razreševanje odvisnosti, \ldots
+            \end{itemize}
+            \item ni razlike med sistemskimi in aplikacijskimi posodobitvami,
+            \item prosto dodajanje repozitorijev,
+            \item najpogostejši kompresijski algoritem je \emph{zstd (zstandard)}.
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{Linux (podroben pogled): Fedora}
+        \begin{itemize}
+            \item upravljalec paketov DNF (wrapper za RPM),
+            \item format RPM,
+            \item binarna in izvornokodna oblika,
+            \item binarna vsebuje zgrajeno aplikacijo ali knjižnico,
+            \item izvornokodna vsebuje skripte in datoteke za grajenje binarne,
+            \item format:
+            \begin{itemize}
+                \item podpis (kriptografski ali zgoščevalni),
+                \item glava (metapodatki: licenca, verzija, opis),
+                \item vsebina (\emph{payload}: kompresiran binarni program ali knjižnica),
+            \end{itemize}
+            \item prednost da lahko prebere metapodatke brez dekompresiranja vsebine.
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}[plain,c]
+       \begin{center}
+            Vprašanja?
+       \end{center}
+    \end{frame}
+
+\end{document}
