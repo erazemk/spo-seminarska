@@ -2,43 +2,51 @@
 
 Ker Linux sam po sebi ni operacijski sistem temveč le jedro sistema, obstaja veliko implementacij operacijskih sistemov,
 ki temeljijo na Linux jedru oz. tako imenovanih distribucij Linux.
-Kljub pomembnosti jedra Linux je le-to v večini distribucij v obliki preprostega paketa, tako da se lahko enostavno
-posodablja skupaj s drugimi paketi v sistemu.
+Kljub pomembnosti jedra Linux je le-to v večini distribucij v obliki preprostega programskega paketa,
+tako da se lahko enostavno posodablja skupaj s drugimi programskimi paketi v sistemu.
 
-Distribucije Linux za posodabljanje sistema in aplikacij uporabljajo upravljalce paketov (ang. \emph{package manager}),
-katerih naloga je, da pakete prenesejo, dekompresirajo in namestijo na določeno mesto v sistemu.
-Implementacije upravljalcev paketov se razlikujejo med distribucijami, a si jih ponavadi distribucije, ki temeljijo na
-drugih z njimi delijo.
+Distribucije Linux za posodabljanje sistema in aplikacij uporabljajo upravljalce\linebreak programskih paketov
+(ang. \emph{package manager}), katerih naloga je, da programske pakete prenesejo,
+dekompresirajo in namestijo na določeno mesto v sistemu.
+Implementacije upravljalcev programskih paketov se razlikujejo med distribucijami,
+a si jih ponavadi distribucije, ki temeljijo na drugih, z njimi delijo.
 
-Ker so si distribucije med sabo tako podobne, je dovolj, da podrobno prikažemo delovanje le pri eni izmed njih, nato
+V nasprotju z operacijsim sistemov Windows, kjer so vsi programski repozitoriji v lasti Microsoft,
+distribucije Linux podpirajo prosto dodajanje uporabniških repozitorijev, nekatere pa le-te uporabljajo tudi
+kot privzete vire posodobitev \cite{arch-mirrors}.
+
+Ker so si distribucije med sabo tako podobne je dovolj, da podrobno prikažemo delovanje le pri eni izmed njih, nato
 pa pri ostalih omenimo le razlike - za namene seminarske naloge sem izbral distribucijo Fedora, saj sem z njo tudi
-najbolj seznanjen.
+najbolj seznanjen.\\
 
-% Notes:
-%   - sistem se posodablja s package manager-om
-%   - "sistem" pomeni kernel + paketi
-%   - packagei so v repozitoriju
-%   - opiši Ubuntu (apt), Fedoro (dnf) in Arch (pacman)
-%   - opiši compression algoritem
-%   - opiši postopek inštalacije paketa
+Fedora (tudi \emph{Fedora Linux}) za upravljanje programskih paketov uporablja orodje DNF,
+programski paketi pa so v formatu RPM \cite{rpm}.
 
-
-\subsubsection{Upravljalec paketov}
-
-Fedora (tudi \emph{Fedora Linux}) za upravljanje paketov uporablja orodje DNF, paketi pa so v formatu RPM.
-
-Le-ti so na voljo v dveh formatih, binarnem (ang. \emph{Binary RPM}) in izvornokodnem (ang. \emph{Source RPM}).
-Paketi prvega formata vsebujejo celotno zgrajeno aplikacijo ali sistemsko knjižnico za posamezno
-računalniško arhitekturo, paketi drugega formata pa vsebujejo skripte in druge datoteke, ki so potrebne za grajenje
-binarnega formata paketa.
+Le-ti so na voljo v dveh oblikah, binarni (ang. \emph{Binary RPM}) in izvornokodni (ang. \emph{Source RPM}).
+Programski paketi prve oblike vsebujejo celotno zgrajeno aplikacijo ali sistemsko knjižnico za posamezno
+računalniško arhitekturo, paketi druge oblike pa vsebujejo skripte in druge datoteke, ki so potrebne za grajenje
+binarne oblike programskega paketa.
 Ime \emph{izvornikodni format} se ne navezuje na licenco programa, ki ga distributiramo, saj vsebuje le navodila
-za namestitev programa, npr. prenos že zgrajenega programa iz določenega spletnega naslova.
+za namestitev programa, kar lahko vključuje tudi le prenos že zgrajenega zaprtokodnega programa
+iz določenega spletnega naslova.
 
-Format RPM je sestavljen iz podpisa, glave (ang. \emph{header}) in vsebine (ang. \emph{payload}).
-Podpis je lahko kriptografski (npr. PGP) ali pa zgoščevalni (npr. SHA256) in je namenjen preverjanju integritete paketa,
-glava pa vsebuje metapodatke o paketu kot so npr. licenca, verzija in opis.
-Vsebina vključuje celotno binarno kodo programa, zaradi velikosti pa je kompresirana s kompresijskim algoritmom zstd.
+Format RPM je sestavljen iz podpisa (ang. \emph{signature}), glave (ang. \emph{header}) in vsebine
+(ang. \emph{payload}).
+Podpis je lahko kriptografski (npr. PGP) ali pa zgoščevalni (npr. SHA256) in je namenjen preverjanju integritete
+programskega paketa, glava pa vsebuje metapodatke o programskem paketu kot so licenca, verzija in opis.
+Vsebina vključuje binarno (prevedeno) obliko programa, zaradi velikosti pa je kompresirana
+s kompresijskim algoritmom zstd \cite{fedora-zstd}.
 
 Prednost formata RPM pred drugimi formati je ta, da lahko upravljalec paketov prebere vse metapodatke paketa in preveri
 njegovo integriteto, ne da bi potreboval dekompresirati vsebino paketa, kar zelo pospeši iskanje paketov in omogoča
 kompleksne operacije, kot je iskanje po opisih ali pa odvisnostih.
+
+DNF, kot tudi upravljalci programskih paketov v drugih distribucijah,
+omogoča veliko funkcionalnosti, med drugim iskanje informacij o programskih paketih, prenašanje programskih
+paketov iz repozitorijev, namestitev in odmestitev programskih paketov, avtomatsko razreševanje odvisnosti in celo
+popolno nadgradnjo sistema iz ene verzije na drugo \cite{fedora-dnf}.\\
+
+Ostali znani upravljalci programskih paketov drugih distribucij so \emph{APT} \cite{ubuntu-pm},
+uporabljen v distribucijah Debian, Ubuntu in njunih izpeljavah (Ubuntu je izpeljan iz Debian,
+a je zaradi pogostosti uporabe vreden omembe), \emph{pacman} \cite{arch-pm}, uporabljen v distribuciji Arch Linux
+in njegovih izpeljavah in \emph{Zypper} \cite{opensuse-pm}, uporabljen v distribuciji OpenSUSE.
