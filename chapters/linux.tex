@@ -20,7 +20,7 @@ namene seminarske naloge sem izbral distribucijo Fedora, saj sem z njo tudi najb
 
 \subsubsection{Visokonivojski pogled}
 
-\href{https://getfedora.org/}{Fedora} (tudi \emph{Fedora Linux}) za upravljanje programskih paketov uporablja
+\href{https://getfedora.org/}{Fedora} (tudi Fedora Linux) za upravljanje programskih paketov uporablja
 orodje DNF, programski paketi pa so v formatu RPM \cite{rpm}.
 Le-ti so na voljo v dveh oblikah, binarni (ang. \emph{Binary RPM}) in izvornokodni (ang. \emph{Source RPM}).
 Programski paketi prve oblike vsebujejo celotno zgrajeno aplikacijo ali sistemsko knjižnico za posamezno
@@ -48,22 +48,23 @@ kompleksne operacije, kot je iskanje po opisih ali pa odvisnostih.
 \subsubsection{DNF upravljalec programskih paketov}
 
 DNF, kot tudi upravljalci programskih paketov v drugih distribucijah, omogoča veliko funkcionalnosti,
-med drugim iskanje informacij o programskih paketih, prenašanje programskih paketov iz repozitorijev,
+med drugim iskanje informacij o programskih paketih, prenašanje\linebreak programskih paketov iz repozitorijev,
 namestitev in odmestitev programskih paketov, avtomatsko razreševanje odvisnosti in celo popolno nadgradnjo sistema
 iz ene verzije v drugo \cite{fedora-dnf}.\\
 
 Če podrobno pogledamo delovanje DNF, lahko vidimo, da za upravljanje programskih paketov uporablja
 \href{http://rpm.org/}{RPM} - nizkonivojski upravljalec programskih paketov, ki zna delati s formatom RPM,
 pa tudi knjižnici \href{https://github.com/openSUSE/libsolv}{libsolv} in
-\href{https://github.com/rpm-software-management/libdnf}{libdnf}, za delo z metapodatki in prenose programskih paketov
+\href{https://github.com/rpm-software-management/libdnf}{libdnf}.
+Za delo z metapodatki in prenose programskih paketov
 uporablja knjižnico \href{https://github.com/rpm-software-management/librepo}{librepo}, za procesiranje podatkov o
 združevanju programskih paketov pa knjižnico \href{https://github.com/rpm-software-management/libcomps}{libcomps}
 \cite{fedora-dnf-git-repo}.
 
-Knjižnica \emph{librepo} ponuja API, ki omogoča prenos metapodatkov in programskih paketov iz Linux repozitorijev,
-knjižnica \emph{libsolv} skrbi za razreševanje odvisnosti med programskimi paketi,
-knjižnica \emph{libdnf} združuje funkcionalnosti librepo in libsolv in jih na visokonivojski način ponuja DNF,
-knjižnica \emph{libcomps} pa je namenjena upravljanju metapodatkov o skupinah programskih paketov, ki jih DNF uporabi
+Knjižnica librepo ponuja API, ki omogoča prenos metapodatkov in programskih paketov iz Linux repozitorijev,
+knjižnica libsolv skrbi za razreševanje odvisnosti med programskimi paketi,
+knjižnica libdnf združuje funkcionalnosti librepo in libsolv in jih na visokonivojski način ponuja DNF,
+knjižnica libcomps pa je namenjena upravljanju metapodatkov o skupinah programskih paketov, ki jih DNF uporabi
 za množično nameščanje podobnih programskih paketov (npr. programi, ki so potrebni za grafično okolje GNOME).
 
 \subsubsection{Upravljalci programskih paketov v drugih distribucijah Linux}
@@ -71,7 +72,7 @@ za množično nameščanje podobnih programskih paketov (npr. programi, ki so po
 Ostali znani upravljalci programskih paketov drugih distribucij so
 \href{https://ubuntu.com/server/docs/package-management}{apt}, uporabljen v distribucijah
 \href{https://www.debian.org/}{Debian}, \href{https://ubuntu.com/}{Ubuntu} in njunih izpeljavah (Ubuntu je izpeljan iz
-Debian, a je zaradi pogostosti uporabe vreden omembe), \href{https://wiki.archlinux.org/title/pacman}{\emph{pacman}},
-uporabljen v distribuciji \href{https://archlinux.org/}{Arch Linux} in njegovih izpeljavah in
-\href{https://en.opensuse.org/Portal:Zypper}{\emph{zypper}}, uporabljen v distribuciji
+Debian, a je zaradi pogostosti uporabe vreden omembe), \href{https://wiki.archlinux.org/title/pacman}{pacman},
+uporabljen v distribuciji \href{https://archlinux.org/}{Arch Linux} in njegovih izpeljavah, in
+\href{https://en.opensuse.org/Portal:Zypper}{zypper}, uporabljen v distribuciji
 \href{https://www.opensuse.org/}{OpenSUSE}.
