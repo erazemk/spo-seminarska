@@ -15,12 +15,13 @@ V nasprotju z operacijskim sistemom Windows, kjer so vsi programski repozitoriji
 distribucije Linux podpirajo prosto dodajanje uporabniških repozitorijev, nekatere pa le-te uporabljajo tudi
 kot privzete vire posodobitev \cite{arch-mirrors}.\\
 
-Ker so si distribucije med sabo tako podobne, je dovolj, da podrobno prikažemo delovanje le pri eni izmed njih, nato
-pa pri ostalih omenimo le razlike - za namene seminarske naloge sem izbral distribucijo Fedora, saj sem z njo tudi
-najbolj seznanjen.\\
+Ker so si distribucije med sabo tako podobne, je dovolj, da podrobno prikažemo delovanje le pri eni izmed njih, za
+namene seminarske naloge sem izbral distribucijo Fedora, saj sem z njo tudi najbolj seznanjen.
 
-Fedora (tudi \emph{Fedora Linux}) za upravljanje programskih paketov uporablja orodje DNF,
-programski paketi pa so v formatu RPM \cite{rpm}.
+\subsubsection{Visokonivojski pogled}
+
+\href{https://getfedora.org/}{Fedora} (tudi \emph{Fedora Linux}) za upravljanje programskih paketov uporablja
+orodje DNF, programski paketi pa so v formatu RPM \cite{rpm}.
 Le-ti so na voljo v dveh oblikah, binarni (ang. \emph{Binary RPM}) in izvornokodni (ang. \emph{Source RPM}).
 Programski paketi prve oblike vsebujejo celotno zgrajeno aplikacijo ali sistemsko knjižnico za posamezno
 računalniško arhitekturo, paketi druge oblike pa vsebujejo skripte in druge datoteke, ki so potrebne za grajenje
@@ -28,6 +29,8 @@ binarne oblike programskega paketa.
 Ime \emph{izvornokodni format} se ne navezuje na licenco programa, ki ga distribuiramo, saj vsebuje le navodila
 za namestitev programa, kar lahko vključuje tudi le prenos že zgrajenega zaprtokodnega programa
 iz določenega spletnega naslova.
+
+\subsubsection{Format RPM}
 
 Format RPM je sestavljen iz podpisa (ang. \emph{signature}), glave (ang. \emph{header}) in vsebine
 (ang. \emph{payload}).
@@ -40,12 +43,35 @@ Prednost formata RPM pred drugimi formati je ta, da lahko upravljalec paketov pr
 njegovo integriteto, ne da bi potreboval dekompresirati vsebino paketa, kar zelo pospeši iskanje paketov in omogoča
 kompleksne operacije, kot je iskanje po opisih ali pa odvisnostih.
 
-DNF, kot tudi upravljalci programskih paketov v drugih distribucijah,
-omogoča veliko funkcionalnosti, med drugim iskanje informacij o programskih paketih, prenašanje programskih
-paketov iz repozitorijev, namestitev in odmestitev programskih paketov, avtomatsko razreševanje odvisnosti in celo
-popolno nadgradnjo sistema iz ene verzije v drugo \cite{fedora-dnf}.\\
+\newpage
 
-Ostali znani upravljalci programskih paketov drugih distribucij so \emph{apt} \cite{ubuntu-pm},
-uporabljen v distribucijah Debian, Ubuntu in njunih izpeljavah (Ubuntu je izpeljan iz Debian,
-a je zaradi pogostosti uporabe vreden omembe), \emph{pacman} \cite{arch-pm}, uporabljen v distribuciji Arch Linux
-in njegovih izpeljavah in \emph{zypper} \cite{opensuse-pm}, uporabljen v distribuciji OpenSUSE.
+\subsubsection{DNF upravljalec programskih paketov}
+
+DNF, kot tudi upravljalci programskih paketov v drugih distribucijah, omogoča veliko funkcionalnosti,
+med drugim iskanje informacij o programskih paketih, prenašanje programskih paketov iz repozitorijev,
+namestitev in odmestitev programskih paketov, avtomatsko razreševanje odvisnosti in celo popolno nadgradnjo sistema
+iz ene verzije v drugo \cite{fedora-dnf}.\\
+
+Če podrobno pogledamo delovanje DNF, lahko vidimo, da za upravljanje programskih paketov uporablja
+\href{http://rpm.org/}{RPM} - nizkonivojski upravljalec programskih paketov, ki zna delati s formatom RPM,
+pa tudi knjižnici \href{https://github.com/openSUSE/libsolv}{libsolv} in
+\href{https://github.com/rpm-software-management/libdnf}{libdnf}, za delo z metapodatki in prenose programskih paketov
+uporablja knjižnico \href{https://github.com/rpm-software-management/librepo}{librepo}, za procesiranje podatkov o
+združevanju programskih paketov pa knjižnico \href{https://github.com/rpm-software-management/libcomps}{libcomps}
+\cite{fedora-dnf-git-repo}.
+
+Knjižnica \emph{librepo} ponuja API, ki omogoča prenos metapodatkov in programskih paketov iz Linux repozitorijev,
+knjižnica \emph{libsolv} skrbi za razreševanje odvisnosti med programskimi paketi,
+knjižnica \emph{libdnf} združuje funkcionalnosti librepo in libsolv in jih na visokonivojski način ponuja DNF,
+knjižnica \emph{libcomps} pa je namenjena upravljanju metapodatkov o skupinah programskih paketov, ki jih DNF uporabi
+za množično nameščanje podobnih programskih paketov (npr. programi, ki so potrebni za grafično okolje GNOME).
+
+\subsubsection{Upravljalci programskih paketov v drugih distribucijah Linux}
+
+Ostali znani upravljalci programskih paketov drugih distribucij so
+\href{https://ubuntu.com/server/docs/package-management}{apt}, uporabljen v distribucijah
+\href{https://www.debian.org/}{Debian}, \href{https://ubuntu.com/}{Ubuntu} in njunih izpeljavah (Ubuntu je izpeljan iz
+Debian, a je zaradi pogostosti uporabe vreden omembe), \href{https://wiki.archlinux.org/title/pacman}{\emph{pacman}},
+uporabljen v distribuciji \href{https://archlinux.org/}{Arch Linux} in njegovih izpeljavah in
+\href{https://en.opensuse.org/Portal:Zypper}{\emph{zypper}}, uporabljen v distribuciji
+\href{https://www.opensuse.org/}{OpenSUSE}.
