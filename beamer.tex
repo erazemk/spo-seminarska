@@ -20,7 +20,7 @@
     \begin{frame}
         \frametitle{Posodobitve operacijskih sistemov}
         \begin{itemize}
-            \item obvezno za vse spletno povezane naprave,
+            \item priporočeno za vse spletno povezane naprave,
             \item varnostne posodobitve, nova funkcionalnost,
             \item za sistemske komponente skrbi OS,
             \item za aplikacije skrbi OS ali pa same implementirajo posodobitve.
@@ -91,11 +91,12 @@
         \frametitle{Linux}
         \begin{itemize}
             \item veliko distribucij \( \Rightarrow \) veliko implementacij,
-            \item programi distributirani v obliki programskih paketov,
+            \item programi distribuirani v obliki programskih paketov,
             \item jedro distributirano kot programski paket,
-            \item za posodobitve skrbi \emph{package manager} (upravljalec paketov):
+            \item za posodobitve skrbi \emph{package manager} (upravljalec programskih paketov):
             \begin{itemize}
                 \item primeri: DNF, APT, pacman, Zypper, \ldots
+                \item večina distribucij uporablja librepo knjižnico za metapodatke in prenos,
                 \item naloge: iskanje, prenos in namestitev paketov, razreševanje odvisnosti, \ldots
             \end{itemize}
             \item ni razlike med sistemskimi in aplikacijskimi posodobitvami,
@@ -105,10 +106,11 @@
     \end{frame}
 
     \begin{frame}
-        \frametitle{Linux (podroben pogled): Fedora}
+        \frametitle{Linux (podroben pogled): DNF}
         \begin{itemize}
-            \item upravljalec paketov DNF (wrapper za RPM),
-            \item format RPM,
+            \item wrapper za RPM package manager,
+            \item uporablja format RPM,
+            \item knjižnica libdnf (wrapper za libsolv in librepo)
             \item binarna in izvornokodna oblika,
             \begin{itemize}
                 \item binarna vsebuje zgrajeno aplikacijo ali knjižnico,
@@ -120,7 +122,6 @@
                 \item glava (metapodatki: licenca, verzija, opis),
                 \item vsebina (\emph{payload}: kompresiran binarni program ali knjižnica),
             \end{itemize}
-            \item prednost da lahko prebere metapodatke brez dekompresiranja vsebine.
         \end{itemize}
     \end{frame}
 
