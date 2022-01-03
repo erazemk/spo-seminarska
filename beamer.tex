@@ -20,8 +20,8 @@
     \begin{frame}
         \frametitle{Posodobitve operacijskih sistemov}
         \begin{itemize}
-            \item priporočeno za vse spletno povezane naprave,
-            \item varnostne posodobitve, nova funkcionalnost,
+            \item priporočene za vse spletno povezane naprave,
+            \item varnostne posodobitve / popravljanje napak, nova funkcionalnost,
             \item za sistemske komponente skrbi OS,
             \item za aplikacije skrbi OS ali pa same implementirajo posodobitve.
         \end{itemize}
@@ -38,27 +38,27 @@
             \item brez povezave preko zunanjega media (CD/USB):
             \begin{itemize}
                 \item varnejše (banke, borze, \ldots),
-                \item uporaba kompresijskih algoritmov.
             \end{itemize}
+            \item uporaba kompresijskih algoritmov.
         \end{itemize}
     \end{frame}
 
-    \begin{frame}
-        \frametitle{Visokonivojski postopek nameščanja}
-        \begin{enumerate}
-            \item kontaktiranje strežnika s posodobitvami,
-            \item iskanje posodobitev,
-            \item prenos najdenih posodobitev,
-            \item dekompresiranje in obdelava prenosa,
-            \item namestitev v sistem.
-        \end{enumerate}
-    \end{frame}
+    % \begin{frame}
+    %     \frametitle{Visokonivojski postopek nameščanja}
+    %     \begin{enumerate}
+    %         \item kontaktiranje strežnika s posodobitvami,
+    %         \item iskanje posodobitev,
+    %         \item prenos najdenih posodobitev,
+    %         \item dekompresiranje in obdelava prenosa,
+    %         \item namestitev v sistem.
+    %     \end{enumerate}
+    % \end{frame}
 
     \begin{frame}
         \frametitle{Razlike med implementacijami}
         \begin{itemize}
             \item kdo gostuje strežnike (centralizirani ali decentralizirani),
-            \item vrsta in oblika posodobitev,
+            \item oblika posodobitev (kumulativne ali delta posodobitve),
             \item razlikovanje med sistemsko in aplikacijsko programsko opremo,
             \item kompresijski algoritmi.
         \end{itemize}
@@ -69,10 +69,9 @@
         \begin{itemize}
             \item sistemske programe posodablja OS, aplikacije se posodabljajo posebej,
             \item strežniki so v Microsoftovi lasti,
-            \item za posodobitve skrbi \emph{Orkestrator},
             \item naključen čas iskanja posodobitev (obremenjenost strežnikov),
             \item samo kumulativne posodobitve (prenos celotne vsebine),
-            \item \emph{forward and reverse} diferencialna kompresija (do 40 \% prihranka).
+            \item vnaprejšnja in vzvratna diferencialna kompresija (do 40 \% prihranka).
         \end{itemize}
     \end{frame}
 
@@ -81,6 +80,7 @@
         \begin{itemize}
             \item delitev posodobitev na storitve (Windows Update, Microsoft Update, Store, \ldots),
             \item uporaba \emph{Delivery Optimization} za preprečevanje zasičenosti omrežja,
+            \item za posodobitve skrbi \emph{Orkestrator},
             \item \emph{Arbiter} uporabi metapodatke za generiranje \emph{seznama dejanj},
             \item namestitveni program uporabi seznam dejanj za namestitev,
             \item \emph{Orkestrator} ponovno zažene posodobljeno napravo.
@@ -93,13 +93,12 @@
             \item veliko distribucij \( \Rightarrow \) veliko implementacij,
             \item programi distribuirani v obliki programskih paketov,
             \item jedro distributirano kot programski paket,
+            \item ni razlike med sistemskimi in aplikacijskimi posodobitvami,
             \item za posodobitve skrbi \emph{package manager} (upravljalec programskih paketov):
             \begin{itemize}
                 \item primeri: DNF, APT, pacman, Zypper, \ldots
-                \item večina distribucij uporablja librepo knjižnico za metapodatke in prenos,
                 \item naloge: iskanje, prenos in namestitev paketov, razreševanje odvisnosti, \ldots
             \end{itemize}
-            \item ni razlike med sistemskimi in aplikacijskimi posodobitvami,
             \item prosto dodajanje repozitorijev,
             \item najpogostejši kompresijski algoritem je \emph{zstd (zstandard)}.
         \end{itemize}
