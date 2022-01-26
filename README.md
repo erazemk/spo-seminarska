@@ -2,7 +2,7 @@
 
 Seminarska naloga za predmet Sistemska programska oprema.
 
-PDF oblika dela je na voljo [tukaj](https://git.sr.ht/~erazemk/spo-seminarska/refs/download/v2.0/seminarska-v2.0.pdf).
+PDF oblika dela je na voljo [tukaj](https://github.com/erazemk/spo-seminarska/releases/download/v2.0/seminarska-v2.0.pdf).
 
 ## Licenca
 
